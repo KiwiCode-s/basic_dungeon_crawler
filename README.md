@@ -1,7 +1,7 @@
 # Project Name: A Basic Rust RougeLike
 
 ### Short Description
-A dungon crawler with procdieually generated levels and monsters with turn based movement/combat. Player wins by finding the Yala("yet another lost amulet")
+A dungon crawler with procedurally generated levels and monsters with turn based movement/combat. Player wins by finding the Yala("yet another lost amulet")
 
 ### Basic Game Loops
 1. Enter dungeon level
