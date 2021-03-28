@@ -14,6 +14,8 @@ pub struct ChasingPlayer;
 pub struct Item;
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct AmuletOfYala;
+#[derive(Clone, Debug, PartialEq)]
+pub struct ProvidesDungeonMap;
 
 //------------------------------------------------------------------------------
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -21,11 +23,7 @@ pub struct Render {
     pub color: ColorPair,
     pub glyph: FontCharType,
 }
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct WantsToMove {
-    pub entity: Entity,
-    pub destination: Point,
-}
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Health {
     pub current: i32,
@@ -41,6 +39,16 @@ pub struct WantsToAttack {
     pub attacker: Entity,
     pub victim: Entity,
 }
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct WantsToMove {
+    pub entity: Entity,
+    pub destination: Point,
+}
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ActivateItem {
+    pub used_by: Entity,
+    pub item: Entity,
+}
 #[derive(Clone, Debug, PartialEq)]
 pub struct Name(pub String);
 
@@ -50,6 +58,13 @@ pub struct FieldOfView {
     pub radius: i32,
     pub is_dirty: bool,
 }
+#[derive(Clone, Debug, PartialEq)]
+pub struct ProvidesHealing {
+    pub amount: i32,
+}
+
+#[derive(Clone, PartialEq)]
+pub struct Carried(pub Entity);
 
 impl FieldOfView {
     pub fn new(radius: i32) -> Self {
