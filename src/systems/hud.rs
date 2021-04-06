@@ -28,6 +28,17 @@ pub fn hud(ecs: &SubWorld) {
         ),
         ColorPair::new(WHITE, RED),
     );
+    let (_player, map_level) = <(Entity, &Player)>::query()
+        .iter(ecs)
+        .find_map(|(entity, player)| Some((*entity, player.map_level)))
+        .unwrap();
+    draw_batch.print_color_right(
+        Point::new(SCREEN_WIDTH * 2, 1),
+        format!("Dungeon Level: {}", map_level+1),
+        ColorPair::new(YELLOW, BLACK)
+    );
+
+
 
     let player = <(Entity, &Player)>::query()
         .iter(ecs)
@@ -57,6 +68,12 @@ pub fn hud(ecs: &SubWorld) {
 
     draw_batch.submit(10000).expect("Batch error");
 }
+
+
+
+
+
+
 
 /*
     let mut mana_query = <&Mana>::query().filter(component::<Player>());

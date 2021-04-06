@@ -2,8 +2,7 @@ use crate::prelude::*;
 use std::collections::HashSet;
 
 // Component Tags
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct Player;
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Enemy;
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -16,8 +15,15 @@ pub struct Item;
 pub struct AmuletOfYala;
 #[derive(Clone, Debug, PartialEq)]
 pub struct ProvidesDungeonMap;
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Weapon;
 
 //------------------------------------------------------------------------------
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Player {
+    pub map_level: u32,
+}
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Render {
     pub color: ColorPair,
@@ -63,6 +69,8 @@ pub struct ProvidesHealing {
     pub amount: i32,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Damage(pub i32);
 #[derive(Clone, PartialEq)]
 pub struct Carried(pub Entity);
 
