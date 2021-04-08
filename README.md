@@ -1,4 +1,5 @@
-![alt tag](https://imgur.com/qJzko8l)
+![alt tag](https://github.com/KiwiCode-s/basic_dungeon_crawler/blob/master/ExamplePics/RustRougelikeGif.gif)
+
 # Project Name: A Basic Rust RougeLike
 
 ### Short Description
