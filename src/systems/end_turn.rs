@@ -5,7 +5,8 @@ use crate::prelude::*;
 #[read_component(Point)]
 #[read_component(AmuletOfYala)]
 #[read_component(Player)]
-pub fn end_turn(ecs: &SubWorld, #[resource] turn_state: &mut TurnState) {
+#[read_component(Map)]
+pub fn end_turn(ecs: &SubWorld, #[resource] turn_state: &mut TurnState, #[resource] map: &Map) {
     //queeries
     let mut player_hp = <(&Health, &Point)>::query().filter(component::<Player>()); // (1)
     let mut amulet = <&Point>::query().filter(component::<AmuletOfYala>());
@@ -18,7 +19,8 @@ pub fn end_turn(ecs: &SubWorld, #[resource] turn_state: &mut TurnState) {
         _ => current_state, // (3)
     };
 
-    let amulet_pos = amulet.iter(ecs).nth(0).unwrap();
+    let amulet_default = Point::new(-1, -1);
+    let amulet_pos = amulet.iter(ecs).nth(0).unwrap_or(&amulet_default);
 
     player_hp.iter(ecs).for_each(|(hp, pos)| {
         // (4)
@@ -27,6 +29,10 @@ pub fn end_turn(ecs: &SubWorld, #[resource] turn_state: &mut TurnState) {
         }
         if pos == amulet_pos {
             new_state = TurnState::Victory;
+        }
+        let idx = map.point2d_to_index(*pos);
+        if map.tiles[idx] == TileType::Exit {
+            new_state = TurnState::NextLevel;
         }
     });
 
