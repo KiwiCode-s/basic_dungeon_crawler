@@ -27,6 +27,6 @@ A dungon crawler with procedurally generated levels and monsters with turn based
 3. add some dungeon themes
 4. add multpiple layers to the dungeon with the amulet on the last one
 5. add varied weapons to the game
-6. move to a data drive design for spawning enemies
+6. move to a data driven design for spawning enemies
 7. consider some visual effects to make combat visceral 
 8. keep score
